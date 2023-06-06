@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width , initial-scale = 1 , shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <title>Clinic Home</title>
+</head>
+<body>
+<div class="container">
+    <h1>WELCOME TO JAC project clinic</h1>
+    <hr>
+    <h4>login as doctor</h4>
+    <form th:action="@{/clinic/doctorLogin}">
+        <input type="text" th:name="docEmail" class="form-control mb-4 w-25" placeholder="Email">
+
+        <input type="submit" class="btn btn-info col-2"></input>
+    </form>
+    <h4>login as Patient</h4>
+    <form th:action="@{/clinic/patientLogin}">
+        <input type="email" th:name="patEmail" class="form-control mb-4 w-25" placeholder="Email">
+        <input type="submit" class="btn btn-info col-2"></input>
+    </form>
+</div>
+</body>
+</html>

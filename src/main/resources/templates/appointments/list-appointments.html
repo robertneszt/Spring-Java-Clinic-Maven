@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width , initial-scale = 1 , shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/demo.css}">
+    <title>Appointment List</title>
+</head>
+<body>
+<div class="container">
+    <h3>All your appointments</h3>
+    <a th:href="@{/clinic/logout}" class="btn btn-danger btn-sm mb-3">Logout</a>
+    <a th:href="@{/clinic/home}" class="btn btn-primary btn-sm mb-3"> Home</a>
+    <table class="table table-bordered tabled-striped">
+        <thead class="table-dark">
+        <tr>
+            <th>Date</th>
+            <th>Patient's Name</th>
+            <th>Doctor's Name</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tempApt : ${appointments}">
+            <td th:text="${tempApt.datetime}"></td>
+            <td th:text="${tempApt.patientName}"></td>
+            <td th:text="${tempApt.doctorName}"></td>
+            <td th:text="${tempApt.status}"></td>
+            <td>
+                <a th:href="@{/clinic/appointment/update/{aptId}(aptId=${tempApt.id})}"
+                   class="btn btn-info btn-sm">
+                    Update
+                </a>
+                <a th:href="@{/clinic/appointment/delete/{aptId}(aptId=${tempApt.id})}"
+                   class="btn btn-danger btn-sm"
+                   onclick="if (!(confirm('Are you sure you want to delete this appointment?'))) return false">
+                    Delete
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
